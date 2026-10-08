@@ -16,9 +16,12 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,19 +29,37 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: 'npm'
+          node-version: 24
+
+      - name: Normalize package versions for public npm registry
+        run: |
+          node -e '
+            const fs = require("fs");
+            const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+            const pinPublic = {
+              "@google/genai": "^1.0.0",
+              "@tailwindcss/vite": "^4.0.0",
+              "tailwindcss": "^4.0.0",
+              "@vitejs/plugin-react": "^4.3.4",
+              "vite": "^6.2.0",
+              "typescript": "~5.8.2",
+              "@types/react": "^19.0.0",
+              "@types/react-dom": "^19.0.0"
+            };
+            for (const [k, v] of Object.entries(pinPublic)) {
+              if (pkg.dependencies && pkg.dependencies[k]) pkg.dependencies[k] = v;
+              if (pkg.devDependencies && pkg.devDependencies[k]) pkg.devDependencies[k] = v;
+            }
+            fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2));
+          '
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund --legacy-peer-deps
 
       - name: Build production bundle
         run: npm run build
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
@@ -47,7 +68,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
     steps:
       - name: Deploy to GitHub Pages
