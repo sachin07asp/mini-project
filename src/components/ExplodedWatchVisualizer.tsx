@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Sliders } from 'lucide-react';
+import referenceExplodedImg from '../assets/images/aura_exploded_minute_details_1791440510426.jpg';
+import assembledRealWatchImg from '../assets/images/aura_assembled_real_watch_1791439929383.jpg';
 
 export interface WatchLayerSpec {
   id: number;
@@ -110,10 +112,8 @@ export const WATCH_LAYERS: WatchLayerSpec[] = [
   },
 ];
 
-const REFERENCE_EXPLODED_IMAGE =
-  '/src/assets/images/aura_exploded_minute_details_1791440510426.jpg';
-const ASSEMBLED_REAL_WATCH_IMAGE =
-  '/src/assets/images/aura_assembled_real_watch_1791439929383.jpg';
+const REFERENCE_EXPLODED_IMAGE = referenceExplodedImg;
+const ASSEMBLED_REAL_WATCH_IMAGE = assembledRealWatchImg;
 
 interface LayerSliceConfig {
   id: number;

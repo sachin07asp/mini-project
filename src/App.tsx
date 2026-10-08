@@ -27,6 +27,12 @@ import {
 } from 'lucide-react';
 import { ExplodedWatchVisualizer, WATCH_LAYERS } from './components/ExplodedWatchVisualizer';
 import { ClockCursor } from './components/ClockCursor';
+import explodedWatchHeroImg from './assets/images/exploded_watch_hero_1791437510674.jpg';
+import watchBelmontCarreImg from './assets/images/watch_belmont_carre_1791437532656.jpg';
+import watchSteinachChronoImg from './assets/images/watch_steinach_chrono_1791437543895.jpg';
+import watchCalibreDiverImg from './assets/images/watch_calibre_diver_1791437558005.jpg';
+import watchSarnenGmtImg from './assets/images/watch_sarnen_gmt_1791437574187.jpg';
+import atelierWatchmakerImg from './assets/images/atelier_watchmaker_1791437586375.jpg';
 
 interface EngineeringSpec {
   id: string;
@@ -155,7 +161,7 @@ const TIMEPIECES: TimepieceItem[] = [
     category: 'Haute Skeleton',
     status: 'AVAILABLE',
     statusColor: 'emerald',
-    image: '/src/assets/images/watch_belmont_carre_1791437532656.jpg',
+    image: watchBelmontCarreImg,
     description:
       'Architectural geometry meeting haute horlogerie skeleton bridges. Polishedchamfers frame a suspended rectangular gear train.',
     dimensions: '38.5 x 29.5 mm',
@@ -173,7 +179,7 @@ const TIMEPIECES: TimepieceItem[] = [
     category: 'Chronograph',
     status: 'LAST ONES',
     statusColor: 'amber',
-    image: '/src/assets/images/watch_steinach_chrono_1791437543895.jpg',
+    image: watchSteinachChronoImg,
     description:
       'Warm rose-gold case upon charcoal sunray finish with column-wheel clutch and flyback chronograph complication.',
     dimensions: '41.0 mm',
@@ -191,7 +197,7 @@ const TIMEPIECES: TimepieceItem[] = [
     category: 'Diver 300M',
     status: 'AVAILABLE',
     statusColor: 'emerald',
-    image: '/src/assets/images/watch_calibre_diver_1791437558005.jpg',
+    image: watchCalibreDiverImg,
     description:
       'The definitive deep-sea instrument. 120-click ceramic dive bezel, hermetic helium valve, and abyssal blue sunray dial.',
     dimensions: '40.5 mm',
@@ -209,7 +215,7 @@ const TIMEPIECES: TimepieceItem[] = [
     category: 'Haute Skeleton',
     status: 'ON INQUIRY',
     statusColor: 'sky',
-    image: '/src/assets/images/watch_sarnen_gmt_1791437574187.jpg',
+    image: watchSarnenGmtImg,
     description:
       'Dual timezone tracking with integrated 24-hour chapter ring and skeletonized gold bridge architecture.',
     dimensions: '40.0 mm',
@@ -528,7 +534,7 @@ export default function App() {
           <div className="relative rounded-xl overflow-hidden border border-slate-800/80 bg-[#070E1B] shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
             <div className="relative h-[340px] sm:h-[420px] md:h-[460px] w-full overflow-hidden bg-[#050B16]">
               <img
-                src="/src/assets/images/exploded_watch_hero_1791437510674.jpg"
+                src={explodedWatchHeroImg}
                 alt="AURA SWISS Calibre 10 Exploded Horological Architecture"
                 referrerPolicy="no-referrer"
                 style={{
@@ -1009,7 +1015,7 @@ export default function App() {
               <div className="relative rounded-xl overflow-hidden border border-slate-800 bg-[#080F1E] shadow-2xl">
                 <div className="aspect-[3/4] w-full relative">
                   <img
-                    src="/src/assets/images/atelier_watchmaker_1791437586375.jpg"
+                    src={atelierWatchmakerImg}
                     alt="Master Watchmaker at La Chaux-de-Fonds Atelier Bench"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-center"
