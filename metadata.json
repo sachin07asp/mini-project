@@ -1,0 +1,6 @@
+{
+  "name": "AURA SWISS | Calibre 10 Precision Horology",
+  "description": "Independent Swiss manufacture horology based in La Chaux-de-Fonds. Explore the interactive Calibre 10 exploded movement architecture, 316L metallurgy, and limited serial commissions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
